@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/chat/{id?}', ChatgptIndexController::class)->name('chat.show');
-    Route::post('/chat',ChatGptStoreController::class)->name('chat.store');
+    Route::post('/chat/{id?}',ChatGptStoreController::class)->name('chat.store');
 
     });
 
