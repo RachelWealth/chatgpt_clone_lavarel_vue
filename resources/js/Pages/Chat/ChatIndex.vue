@@ -2,7 +2,7 @@
 import ChatLayout from "@/Layouts/ChatLayout.vue";
 import { Link, useForm } from "@inertiajs/vue3";
 import { defineProps } from "vue";
-
+import ChatContent from "@/Components/ChatContent.vue";
 const props = defineProps({
     messages: Array,
     chat: null | Object,
@@ -20,24 +20,11 @@ const submit = () => {
         console.log(error);
     }
 };
-
-// export default {
-//     components: {
-//         ChatLayout,
-//         Link,
-//     },props,
-//     setup() {
-//         return {
-//             form,
-//             submit,
-//         };
-//     },
-// };
 </script>
 <template>
     <ChatLayout>
         <template #aside>
-            <ul class="p-2 ">
+            <ul class="p-2">
                 <template v-for="message in messages" :key="message.id">
                     <li
                         class="px-4 py-2 my-2 flex justify-between font-semibold text-white bg-slate-900 hover:bg-slate-700 rounded-lg duration-200"
@@ -49,14 +36,19 @@ const submit = () => {
                 </template>
             </ul>
         </template>
-        <div class="w-full flex text-white">
+        <div id="content" class="w-full flex text-white">
             <template v-if="chat">
-                <div class="w-full flex h-screen bg-slate-900">
-                    <div class="w-full overflow-auto"> Content</div>
+                <div class="w-full flex h-full bg-slate-900">
+                    <div class="w-full overflow-auto">
+                        <template
+                            v-for="(content, index) in chat?.context"
+                            :key="index"
+                        >
+                            <ChatContent :content="content"> </ChatContent>
+                        </template>
+                    </div>
                 </div>
-                
             </template>
-
         </div>
         <template #form>
             <section class="px-6 top-0">
