@@ -3,7 +3,7 @@
         id="aside"
         class="fixed z-10 top-0 pb-3 px-4 flex justify-center h-screen border-r bg-white transtion duration-300 sm:w-[0%] sm:px-0 md:w-[20%] lg:ml-0 2xl:w-[15%]"
     >
-        <div class="relative top-0">
+        <div class="relative top-0 w-full">
             <slot name="aside"> </slot>
         </div>
     </aside>

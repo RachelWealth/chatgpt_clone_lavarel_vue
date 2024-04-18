@@ -1,14 +1,15 @@
 <template>
-    <div class="w-full flex text-white py-6">
+    <div class="w-full flex text-white py-6"
+    :class="user ? 'bg-slate-800 font-bold' : 'bg-slate-700'">
         <span class="w-1/6 flex justify-end pr-4">
             <svg
                 v-if="content?.role === 'user'"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth="{1.5}"
+                strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6"
+                class="w-6 h-6"
             >
                 <path
                     strokeLinecap="round"
@@ -38,9 +39,11 @@
 </template>
 
 <script setup>
+import { computed } from "vue";
 const props = defineProps({
     content: Object,
 });
+const user = computed(() => props.content?.role === "user");
 </script>
 
 <style lang="scss" scoped></style>

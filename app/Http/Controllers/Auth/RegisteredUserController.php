@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
+use App\Models\Chat;
 use Inertia\Response;
 
 class RegisteredUserController extends Controller
@@ -41,11 +42,19 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+  
+            
+      
         event(new Registered($user));
 
         Auth::login($user);
-
+        Chat::create(
+            [
+                'id' => 0,
+                'user_id' => Auth::id(),
+                'context' => []
+            ]
+        );
         return redirect(route('dashboard', absolute: false));
     }
 }
