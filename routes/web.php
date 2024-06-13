@@ -8,20 +8,6 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Chat;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canChat' => Route::has('chat.show'),
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

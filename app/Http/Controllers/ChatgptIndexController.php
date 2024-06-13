@@ -12,7 +12,7 @@ class ChatgptIndexController extends Controller
     public function __invoke(string $id=null):Response
     {
         //dd(  1? Chat::findOrFail($id):null);
-         $chat=Chat::findOrFail($id);
+        $chat=Chat::findOrFail($id);
         return Inertia::render('Chat/ChatIndex',[
             'chat'=>$chat,
             'messages'=>Chat::latest()->where('user_id',Auth::id())->get(),  
